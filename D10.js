@@ -599,6 +599,22 @@ addTest();
   ***
 
 */
+halfTree = (n) => {
+  const halfTree = document.createElement("div");
+  halfTree.classList.add("halftree");
+  for (let i = 0; i <= n; i++) {
+    const treeRow = document.createElement("p");
+    treeRow.innerHTML = "*".repeat(i);
+    halfTree.appendChild(treeRow);
+  }
+  const aCapo = document.createElement("br");
+  halfTree.appendChild(aCapo);
+  document.getElementsByTagName("body")[0].appendChild(halfTree);
+};
+
+const quantoAlto = 5;
+
+halfTree(quantoAlto);
 
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
@@ -612,6 +628,41 @@ addTest();
 
 */
 
+wholeTree = (n) => {
+  const wholeTree = document.createElement("div");
+  wholeTree.classList.add("wholetree");
+
+  for (let i = 0; i <= n; i++) {
+    const treeRow = document.createElement("p");
+    treeRow.innerHTML = "*".repeat(i * 2 + 1);
+    wholeTree.appendChild(treeRow);
+  }
+  const aCapo = document.createElement("br");
+  wholeTree.appendChild(aCapo);
+  document.getElementsByTagName("body")[0].appendChild(wholeTree);
+};
+
+const quantoAltoWhole = 5;
+
+wholeTree(quantoAltoWhole);
+
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+isItPrime = (numb) => {
+  if (numb <= 1) return false; // devo controllare che il numero non sia 0 o 1 dato che non sono primi di base
+  const radiceQuadrata = Math.sqrt(numb);
+  for (let i = 2; i <= radiceQuadrata; i++) {
+    console.log(numb / i, numb % i);
+    if (numb % i === 0) {
+      return false; // se si trova una divisione con resto 0 ritorno falso
+    }
+  }
+  return true;
+};
+//Si divide per tutti i numeri fino alla radice quadrata per trovare un divisore, non si va oltre la radice quadrata perche qualsiasi numero superiore alla radice quadrata come dividendo si
+// potrebbe scomporre in dividendi più piccoli
+//  Esempio : 36/12 = 3 con resto 0, ma 12 si scompone in (6,2) oppure (3,4)
+console.log(`Esercizio 29`);
+const numeroEs29 = 29;
+console.log(`${numeroEs29} è un numero primo ${isItPrime(numeroEs29)}`);
